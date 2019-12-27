@@ -5,8 +5,8 @@ using OAuth, HTTP, JSON
 function filter_tweets(tweets::Array)
     filtered_tweets = String[]
     keywords = ["brexit", "european union", "vote", "party", "conservative", "labour", "boris", "johnson", "united kingdom", "us"]
-    for k = 1:length(tweets)
-        for i in keywords
+    for i in keywords
+        for k = 1:length(tweets)
             if occursin(i, lowercase(tweets[k]["text"]))
                 push!(filtered_tweets, tweets[k]["id_str"])
             end
@@ -28,7 +28,7 @@ function main()
                 retweet_url = "https://api.twitter.com/1.1/statuses/retweet/$id.json"
                 oauth_post(retweet_url, Dict("id" => "$id"))
             catch
-                #continue
+                continue
             end
         end
     end
