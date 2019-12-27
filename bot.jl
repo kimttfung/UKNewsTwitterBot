@@ -4,7 +4,7 @@ using OAuth, HTTP, JSON
 
 function filter_tweets(tweets::Array)
     filtered_tweets = String[]
-    keywords = ["brexit", "european union", "referendum", "conservative", "labour", "boris johnson", "united kingdom", "scotland", "ukip"]
+    keywords = ["brexit", "european union", "referendum", "conservative", "labour", "boris johnson", "united kingdom", "scotland", "ukip", "london", "manchester", "birmingham", "edinburgh"]
     for i in keywords
         for k = 1:length(tweets)
             if occursin(i, lowercase(tweets[k]["text"]))
