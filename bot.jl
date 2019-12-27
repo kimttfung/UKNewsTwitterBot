@@ -1,3 +1,5 @@
+import Pkg
+Pkg.add(["OAuth", "HTTP", "JSON"])
 using OAuth, HTTP, JSON
 
 function filter_tweets(tweets::Array)
