@@ -36,24 +36,20 @@ function main()
     
     #If there are no new tweets, we will give the user a message to let them know
     if length(filtered_tweets) == 0
-        println("sorry, no new brexit news :(")
+        println("sorry, no new british news :(")
         
     #If there are new tweets, we want to retweet each and one of them
     else
-        for k = 1:length(filtered_tweets)
+        for id in filtered_tweets
+            try
+                oauth_post("https://api.twitter.com/1.1/statuses/retweet/$id.json", Dict("id" => "$id")) #runs the retweet request
             
             #Catches the error given when it tries to retweet the same tweet for the 2nd time
-            try
-                id = tweets[k]["id_str"] #gives the id of the tweet we want to retweet
-                println("tweet no. $(k)'s id: ", id) #let's the user know its id
-                retweet_url = "https://api.twitter.com/1.1/statuses/retweet/$id.json" #url for the retweet request
-                oauth_post(retweet_url, Dict("id" => "$id")) #runs the retweet request
-            
-            #Skips the rest of the current loop iteration to move onto the next retweet
             catch
-                continue
+                continue #Skips the rest of the current loop iteration to move onto the next retweet
             end
         end
+        println("added ", length(filtered_tweets), " tweets") #tells the user how many tweets were added
     end
 end
 
