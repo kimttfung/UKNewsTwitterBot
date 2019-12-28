@@ -64,7 +64,7 @@ oauth_get(endpoint::String, options::Dict) = oauth_request_resource(endpoint, "G
 oauth_post(endpoint::String, options::Dict) = oauth_request_resource(endpoint, "POST", options, consumer_key, secret_consumer_key, access_token, secret_access_token)
 
 #The number of the most recent tweets the bot looks through on its home timeline every 8 minutes
-no_of_tweets = 12
+no_of_tweets = 15
 
 #Runs the main function
 main()
