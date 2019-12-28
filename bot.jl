@@ -54,10 +54,10 @@ function main()
 end
 
 #Variables containing the keys and tokens required to power the account the bot is running on
-consumer_key = "Lr2dHopg7DTgjl3YJVB6W3CJb"
-secret_consumer_key = "o4CSNEg0R2UnIg4gHVoAwEPMacmQEjZJI4xGhZBQA7vRVjx6fW"
-access_token = "1210249574398361600-hQAMP5bkYWSPP5cUgn53EQsMCkst2I"
-secret_access_token = "RItuQ4QjzXLTeC1SlXjLzz5Ce2HJTCCXbPSSCyvT7P69u"
+consumer_key = ARGS[1]
+secret_consumer_key = ARGS[2]
+access_token = ARGS[3]
+secret_access_token = ARGS[4]
 
 #Rewriting GET and POST functions to make life easier: we don't need to call the keys and tokens every time!
 oauth_get(endpoint::String, options::Dict) = oauth_request_resource(endpoint, "GET", options, consumer_key, secret_consumer_key, access_token, secret_access_token)
